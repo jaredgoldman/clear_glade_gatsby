@@ -2,14 +2,19 @@ import React from "react"
 import roomData from "../../../mocks/roomData"
 import Room from "./Room"
 import roomImage from "../../../images/room.png"
+import { useBooking } from "../../../contexts/BookingContext"
 
 export default function RoomList() {
- 
-  const rooms = roomData.map((room, i) => {
-    const { roomName } = room;
+
+  const { rooms } = useBooking();
+
+  const roomSelection = rooms?.map(room => {
+    const { name, type, id } = room;
     return <Room 
-      roomName={roomName}
+      type={type}
+      name={name}
       roomImage={roomImage}
+      key={id}
     />
   })
 
@@ -17,7 +22,7 @@ export default function RoomList() {
     <>
       <h2>Our Rooms</h2>
       <div>
-        {rooms}
+        {roomSelection}
       </div>
     </>
   )

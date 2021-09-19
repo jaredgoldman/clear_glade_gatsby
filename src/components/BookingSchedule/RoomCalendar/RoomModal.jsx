@@ -2,18 +2,28 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import RoomOption from "./RoomOption";
-import rooms from '../../../mocks/roomData'
+// import rooms from '../../../mocks/roomData'
+import { useBooking } from "../../../contexts/BookingContext";
 
 import * as RoomModalStyles from "./RoomModal.module.scss"
 
 export default function RoomModal({
   showModal,
   setShowModal,
+  weekInfo
 }) {
+  
+  const { rooms } = useBooking()
  
   const roomOptions = rooms?.map((room, i)=> {
+    const { type, name, id } = room;
     return (
-      <RoomOption roomNumber={room.name} key={i}/>
+      <RoomOption 
+        type={type}
+        name={name} 
+        weekInfo={weekInfo}
+        key={id}
+      />
     )
   })
 

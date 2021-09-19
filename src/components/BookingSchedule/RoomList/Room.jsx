@@ -2,13 +2,18 @@ import React from "react"
 import * as RoomStyles from "./Room.module.scss"
 
 export default function Room({
-  roomName,
+  type,
+  name,
   roomImage
 }) {
-  
+
+  const capitalizeFirstLetter = (type) => {
+   return type.slice(0, 1).toUpperCase() + type.slice(1)
+  }
+
   return (
     <div className={RoomStyles.room}>
-      <h3>{roomName}</h3>
+      <h3>{capitalizeFirstLetter(type)} {name}</h3>
       <div className={RoomStyles.imageDetails}>
         <img src={roomImage} className={RoomStyles.image}/>
         <ul>
