@@ -1,0 +1,22 @@
+.lightbox {
+  display: flex;
+  justify-content: center;
+  
+  img {
+    margin: 20px;
+    width: 300px;
+  }
+}
+
+.amenities {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+  width: 75%;
+}
