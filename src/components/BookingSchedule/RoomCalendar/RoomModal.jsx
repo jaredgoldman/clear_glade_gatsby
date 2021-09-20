@@ -13,14 +13,16 @@ export default function RoomModal({
   weekInfo
 }) {
   
-  const { rooms } = useBooking()
- 
-  const roomOptions = rooms?.map((room, i)=> {
+  const { rooms } = useBooking();
+
+  const roomOptions = rooms?.map(room => {
     const { type, name, id } = room;
+
     return (
       <RoomOption 
         type={type}
         name={name} 
+        id={id}
         weekInfo={weekInfo}
         key={id}
       />

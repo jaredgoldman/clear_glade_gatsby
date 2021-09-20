@@ -11,15 +11,21 @@ export function useBooking() {
 export function BookingProvider({ children }) {
   const [rooms, setRooms] = useState();
   const [weeks, setWeeks] = useState();
+  const [bookings, setBookings] = useState();
 
   useEffect(() => {
     getRooms().then(data => setRooms(data))
     setWeeks(getWeeks(Date.now()))
+    getBookings().then(data => setBookings(data))
   }, [])
  
   const getRooms = async () => {
-    const res = await axios.get('http://localhost:1337/rooms');
-    return res.data
+    try {
+      const res = await axios.get('http://localhost:1337/rooms');
+      return res.data
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   const getWeeks = (currDate) => {
@@ -35,11 +41,18 @@ export function BookingProvider({ children }) {
   }
 
   const bookRoom = async (bookingData) => {
-
-    console.log(bookingData);
     try {
       const res = await axios.post('http://localhost:1337/bookings', bookingData)
-      console.log(res.data);
+      return res.data
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  const getBookings = async () => {
+    try {
+      const res = await axios.get('http://localhost:1337/bookings');
+      return res.data;
     } catch(error) {
       console.log(error);
     }
@@ -49,7 +62,7 @@ export function BookingProvider({ children }) {
   const formatWeek = (currDate) => {
     const start = startOfWeek(currDate, { weekStartsOn: 1 });
     const end = endOfWeek(currDate, { weekStartsOn: 1 });
-    const thursday = nextThursday(start)
+    const thursday = nextThursday(start);
 
     return {
       start,
@@ -61,6 +74,7 @@ export function BookingProvider({ children }) {
   const value = {
     rooms,
     weeks,
+    bookings,
     bookRoom
   }
 
