@@ -7,26 +7,48 @@ export default function RoomOption({
   name,
   weekInfo,
   id,
+  setShowConfirm,
+  setSelectedRoom,
+  processingBooking,
+  setProcessingBooking
 }) {
+
+  const username = 'Jared Goldman'
+  const { getBookings } = useBooking();
   const [booked, setBooked] = useState(false)
+  const [currentBookings, setCurrentBookings] = useState()
+  const { start } = weekInfo;
 
   useEffect(() => {
-    if (isBooked()) {
-      setBooked(true);
+    if (currentBookings) {
+      if (isBooked()) {
+        setBooked(true);
+      }
     }
-  }, [])
+  }, [currentBookings])
+
+  useEffect(() => {
+    getBookings().then(bookings => {
+      if (bookings) {
+        setCurrentBookings(bookings)
+      }
+    })
+    .catch(e => {
+      console.log(e.response);
+    })
+    setProcessingBooking(false)
+  }, [processingBooking])
+
   
-  const username = 'Jared Goldman'
-  const { bookRoom, bookings } = useBooking();
-  const { start } = weekInfo;
   
-  const handleBookRoom = () => {
-    bookRoom({...weekInfo, username, roomId: id})
-    setBooked(true)
+  const handleSetSelectedRoom = () => {
+    setSelectedRoom({...weekInfo, username, roomId: id});
+    setShowConfirm(true)
   }
 
   const isBooked = () => {
-    for (let booking of bookings) {
+    for (let booking of currentBookings) {
+      // TODO: Find out why my first approach mutated the data
       // const bookingCopy = {...booking}
       // console.log(bookingCopy);
       // console.log('booking id: ', booking.roomId);
@@ -38,22 +60,20 @@ export default function RoomOption({
 
     // return ((booking.roomId === id) && (Number(new Date(start)) === Number(new Date(booking.start))))
 
-      const correctId = (booking.roomId === id);
-      const correctDate = (Number(new Date(start)) == Number(new Date(booking.start)));
+      const correctId = booking.roomId === id;
+      const correctDate = Number(new Date(start)) == Number(new Date(booking.start));
       if (correctId && correctDate) {
         return true
       }
     }
   }
 
- 
-
   return (
     <div 
       className="room-option"
-      onClick={() => handleBookRoom()}
+      onClick={() => handleSetSelectedRoom()}
     >
-      {booked && <div>Booked</div>}
+      {booked && <div>{`Booked by ${username}`}</div>}
       {type} {name}
     </div>
   )

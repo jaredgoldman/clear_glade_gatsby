@@ -75,7 +75,8 @@ export function BookingProvider({ children }) {
     rooms,
     weeks,
     bookings,
-    bookRoom
+    bookRoom,
+    getBookings
   }
 
   return (
