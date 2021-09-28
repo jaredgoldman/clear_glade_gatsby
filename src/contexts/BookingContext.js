@@ -50,6 +50,7 @@ export function BookingProvider({ children }) {
   }
 
   const getBookings = async () => {
+    //TODO: only retreive bookings from the present day forward
     try {
       const res = await axios.get('http://localhost:1337/bookings');
       return res.data;

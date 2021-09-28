@@ -2,17 +2,19 @@ import React from "react";
 import { Link } from "gatsby";
 import logo from "../images/logo.png"
 import * as HeaderStyles from "./Header.module.scss"
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Header() {
 
-  // const { currentUser, logout } = useAuth();
+  const { user, logout } = useAuth();
+
+  // console.log(currentUser);
   // const history = useHistory();
 
   const handleLogout = async () => {
-    console.log('logged out');
+    logout()
   }
 
-  const currentUser = 'Jared'
 
   return (
     <nav className={HeaderStyles.nav}>
@@ -23,12 +25,12 @@ export default function Header() {
         </div>
       </Link>
       <div className={HeaderStyles.buttons}>
-      {/* {currentUser ? <Redirect to='/user-landing'/> :
+      {!user&&
         <Link to="/login">
           Login
         </Link>
-      }            */}
-      {currentUser &&
+      }           
+      {user &&
         <>
           <Link to="/about/">
             About

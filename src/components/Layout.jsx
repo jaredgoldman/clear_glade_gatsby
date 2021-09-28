@@ -1,13 +1,16 @@
 import React from "react"
+import { AuthProvider } from "../contexts/AuthContext"
 import Footer from "./Footer"
 import Header from "./Header"
 
 export default function Layout({ children }) {
   return (
-    <main>
-      <Header/>
-        {children}
-      <Footer/>
-    </main>
+    <AuthProvider>
+      <main>
+        <Header/>
+          {children}
+        <Footer/>
+      </main>
+    </AuthProvider>
   )
 }

@@ -6,8 +6,7 @@ import { useBooking } from '../../../contexts/BookingContext';
 export default function ConfirmRoomModal({
   setShowConfirm,
   showConfirm,
-  selectedRoom,
-  setBooked,
+  selectedRoomData,
   setProcessingBooking
 }) {
 
@@ -18,9 +17,8 @@ export default function ConfirmRoomModal({
   }
 
   const handleBookRoom = () => {
-    bookRoom(selectedRoom)
+    bookRoom(selectedRoomData)
     setProcessingBooking(true)
-    setBooked(true)
   }
 
   return (

@@ -1,49 +1,47 @@
-// import React, { useContext, useState, useEffect } from 'react'
-// import { auth } from '../firebase';
-// import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
+import React, { useContext, useState, useEffect } from 'react'
+import axios from 'axios';
+import ls from 'local-storage'
 
-// const AuthContext = React.createContext();
+const AuthContext = React.createContext();
 
-// export function useAuth() {
-//   return useContext(AuthContext);
-// }
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-// export function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
 
-//   const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState();
 
-//   const login = (email, password) => {
-//     signInWithEmailAndPassword(auth, email, password)
-//     .catch((error) => {
-//       console.log(error.message);
-//     });
-//   }
+  const login = async (email, password) => {
+    try{
+      const user = await axios.post('http://localhost:1337/auth/local', {
+        identifier: email,
+        password
+      })
+      ls('jwt', user.data.jwt)
+      setCurrentUser(user.data)
+    } catch(e) {
+      console.log(e);
+    }
+  }
 
-//   const logout = () => {
-//     setCurrentUser(null);
-//     return signOut(auth);
-//   }
+  const user = ls.get('jwt')
+  console.log(user);
 
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (user) => {
-//       if (user) {
-//         setCurrentUser(user);
-//       } else {
-//         setCurrentUser(null);
-//       }
-//     });
-//     return unsubscribe;
-//   }, [])
+  const logout = () => {
+    ls.remove('jwt')
+  }
 
-//   const value = {
-//     currentUser,
-//     login,
-//     logout
-//   }
+  const value = {
+    currentUser,
+    login,
+    logout,
+    user
+  }
   
-//   return (
-//     <AuthContext.Provider value={value}>
-//       {children}
-//     </AuthContext.Provider>
-//   )
-// }
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
