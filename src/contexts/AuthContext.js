@@ -11,6 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
 
   const [currentUser, setCurrentUser] = useState();
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const login = async (email, password) => {
     try{
@@ -25,8 +26,17 @@ export function AuthProvider({ children }) {
     }
   }
 
-  const user = ls.get('jwt')
-  console.log(user);
+  const checkIfLoggedIn = () => {
+    const user = ls.get('jwt')
+    if (user) return true
+    else return false
+  }
+
+  useEffect(() => {
+    if (checkIfLoggedIn()) {
+      setLoggedIn(true)
+    }
+  }, [currentUser])
 
   const logout = () => {
     ls.remove('jwt')
@@ -36,7 +46,7 @@ export function AuthProvider({ children }) {
     currentUser,
     login,
     logout,
-    user
+    loggedIn
   }
   
   return (

@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react"
+import { navigate } from "gatsby-link";
 
 import "./Login.scss"
 
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Login() {
-
   const { login } = useAuth()
 
   const [email, setEmail] = useState();
@@ -20,8 +20,9 @@ export default function Login() {
     setPassword(e.target.value)
   }
 
-  const handleLogin = () => {
-    login(email, password)
+  const handleLogin = async () => {
+    await login(email, password)
+    navigate('/user/')
   }
 
   return (

@@ -6,15 +6,11 @@ import { useAuth } from '../contexts/AuthContext'
 
 export default function Header() {
 
-  const { user, logout } = useAuth();
-
-  // console.log(currentUser);
-  // const history = useHistory();
+  const { logout, loggedIn } = useAuth();
 
   const handleLogout = async () => {
     logout()
   }
-
 
   return (
     <nav className={HeaderStyles.nav}>
@@ -25,12 +21,12 @@ export default function Header() {
         </div>
       </Link>
       <div className={HeaderStyles.buttons}>
-      {!user&&
+      {!loggedIn &&
         <Link to="/login">
           Login
         </Link>
       }           
-      {user &&
+      {loggedIn &&
         <>
           <Link to="/about/">
             About
@@ -44,7 +40,7 @@ export default function Header() {
         <Link to="/schedule/">
             Schedule
           </Link>
-          <Link to="/logout/"
+          <Link to="/"
             onClick={() => handleLogout()}
           >
             Logout

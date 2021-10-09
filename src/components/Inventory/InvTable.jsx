@@ -21,6 +21,7 @@ export default function InvTable() {
       price={price}
       description={description}
       image={image}
+      key={item}
     />
   })
 
