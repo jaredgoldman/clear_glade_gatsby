@@ -6,7 +6,7 @@ export default function InvTableRow({
   quantity,
   price,
   description,
-  image
+  // image
 }) {
 
   return (
@@ -16,7 +16,7 @@ export default function InvTableRow({
       <td>${price}</td>
       <td>{description}</td>
       <td className="img-row">
-        <img src={image} className="product-image"/>
+        <img src='/images/dairy-products.png' className="product-image"/>
       </td>
     </tr>
   )

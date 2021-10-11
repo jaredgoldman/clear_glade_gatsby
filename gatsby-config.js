@@ -20,12 +20,12 @@ module.exports = {
         // The `spreadsheetName` is recommended, but optional
         // It is used as part of the id's during the node creation, as well as in the generated GraphQL-schema
         // If you are sourcing multiple sheets, you can set this to distringuish between the source data
-        spreadsheetName: "MySheet",
+        spreadsheetName: "",
     
         // The `typePrefix` is optional, default value is "GoogleSpreadsheet"
         // It is used as part of the id's during the node creation, as well as in the generated GraphQL-schema
         // It can be overridden to fully customize the root query
-        typePrefix: "GoogleSpreadsheet",
+        typePrefix: "",
     
         // The `credentials` are only needed when you need to be authenticated to read the document.
         // It's an object with the following shape:
@@ -56,4 +56,8 @@ module.exports = {
       }
     }
   ],
+  proxy: {
+    prefix: "/*",
+    url: "http://localhost:1337",
+  },
 }

@@ -21,7 +21,7 @@ export function BookingProvider({ children }) {
  
   const getRooms = async () => {
     try {
-      const res = await axios.get('http://localhost:1337/rooms');
+      const res = await axios.get('/rooms');
       return res.data
     } catch(error) {
       console.log(error)
@@ -42,7 +42,7 @@ export function BookingProvider({ children }) {
 
   const bookRoom = async (bookingData) => {
     try {
-      const res = await axios.post('http://localhost:1337/bookings', bookingData)
+      const res = await axios.post('/bookings', bookingData)
       return res.data
     } catch(error) {
       console.log(error);
@@ -52,7 +52,7 @@ export function BookingProvider({ children }) {
   const getBookings = async () => {
     //TODO: only retreive bookings from the present day forward
     try {
-      const res = await axios.get('http://localhost:1337/bookings');
+      const res = await axios.get('/bookings');
       return res.data;
     } catch(error) {
       console.log(error);

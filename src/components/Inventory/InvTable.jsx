@@ -1,19 +1,20 @@
 import React from "react"
 import InvTableRow from "./InvTableRow"
-import inventoryData from "../../mocks/inventoryData"
 
 import "./InvTable.scss"
 
-export default function InvTable() {
+export default function InvTable({
+  rows
+}) {
 
-  const inventoryRows = inventoryData.map(product => {
+  const inventoryRows = rows.map(product => {
     const { 
       item,
       quantity,
       price,
       description,
       image
-    } = product;
+    } = product.node
     
     return <InvTableRow 
       item={item}

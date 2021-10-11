@@ -3,16 +3,16 @@ import * as AnnouncementStyles from "./Announcement.module.scss"
 import format from "date-fns/format"
 
 export default function Announcement({
-  subject,
+  title,
   content,
   date
 }) {
 
-  const formattedDate = format(date, 'E LLL do')
+  const formattedDate = format((new Date(date)), 'E LLL do')
 
   return (
     <div className={AnnouncementStyles.announcement}>
-      <h2>{subject}</h2>
+      <h2>{title}</h2>
       <p className="announcement_content">{content}</p>
       <div className="announcement_date">
         <p>{formattedDate}</p>

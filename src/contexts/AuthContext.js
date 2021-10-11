@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios';
 import ls from 'local-storage'
+import { navigate } from "gatsby-link";
 
 const AuthContext = React.createContext();
 
@@ -15,13 +16,15 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     try{
-      const user = await axios.post('http://localhost:1337/auth/local', {
+      const user = await axios.post('/auth/local/', {
         identifier: email,
         password
       })
       ls('jwt', user.data.jwt)
       setCurrentUser(user.data)
+      navigate('/user/')
     } catch(e) {
+      console.log('error');
       console.log(e);
     }
   }
@@ -39,6 +42,7 @@ export function AuthProvider({ children }) {
   }, [currentUser])
 
   const logout = () => {
+    console.log('logout');
     ls.remove('jwt')
   }
 

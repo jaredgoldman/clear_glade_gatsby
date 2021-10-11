@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react"
-import { navigate } from "gatsby-link";
 
 import "./Login.scss"
 
@@ -22,7 +21,6 @@ export default function Login() {
 
   const handleLogin = async () => {
     await login(email, password)
-    navigate('/user/')
   }
 
   return (
