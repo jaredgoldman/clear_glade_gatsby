@@ -8,7 +8,7 @@ export default function Announcement({
   date
 }) {
 
-  const formattedDate = format((new Date(date)), 'E LLL do')
+  const formattedDate = format((new Date(date)), 'EEEE, LLL do - p')
 
   return (
     <div className={AnnouncementStyles.announcement}>
