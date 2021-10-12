@@ -7,10 +7,9 @@ export default function ConfirmRoomModal({
   setShowConfirm,
   showConfirm,
   selectedRoomData,
-  setProcessingBooking
 }) {
 
-  const { bookRoom } = useBooking();
+  const { bookRoom, setProcessingBooking } = useBooking();
 
   const handleCancelConfirm = () => {
     setShowConfirm(false)
@@ -18,7 +17,7 @@ export default function ConfirmRoomModal({
 
   const handleBookRoom = () => {
     bookRoom(selectedRoomData)
-    setProcessingBooking(true)
+    setProcessingBooking((prevValue) => !prevValue)
   }
 
   return (

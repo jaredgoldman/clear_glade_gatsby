@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../components/Layouts/Layout'
-import UserLanding from '../components/UserLanding/UserLanding'
+import Gallery from '../components/Gallery/Gallery'
 
-export default function user() {
+export default function media() {
   return (
     <Layout>
-      <UserLanding/>
+      <Gallery />
     </Layout>
   )
 }

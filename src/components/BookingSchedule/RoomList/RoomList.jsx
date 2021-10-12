@@ -1,5 +1,4 @@
 import React from "react"
-import roomData from "../../../mocks/roomData"
 import Room from "./Room"
 import roomImage from "../../../images/room.png"
 import { useBooking } from "../../../contexts/BookingContext"

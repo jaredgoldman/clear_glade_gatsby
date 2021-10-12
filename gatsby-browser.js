@@ -1,1 +1,11 @@
+// import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// export const wrapRootElement = ({ element }) => {
+//   return (
+//     <SimpleReactLightbox>
+//       {element}
+//     </SimpleReactLightbox>
+//   )
+// }
+

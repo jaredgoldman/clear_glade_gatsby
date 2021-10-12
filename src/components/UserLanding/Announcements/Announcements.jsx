@@ -13,7 +13,6 @@ export default function Announcements() {
       try {
         const res = await axios.get('/posts/')
         setPosts(res.data)
-        console.log(res.data);
       } catch(e) {
         console.log(e.response);
       }

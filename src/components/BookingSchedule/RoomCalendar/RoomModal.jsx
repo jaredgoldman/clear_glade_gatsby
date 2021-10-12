@@ -16,21 +16,15 @@ export default function RoomModal({
   
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedRoomData, setSelectedRoom] = useState()
-  const [processingBooking, setProcessingBooking] = useState(false)
   const [currentBookings, setCurrentBookings] = useState()
-  const { rooms, getBookings } = useBooking()
+  const { rooms, bookings, processingBooking, setProcessingBooking } = useBooking()
 
   // refresh bookings when processing a new booking
   useEffect(() => {
-    getBookings().then(bookings => {
-      if (bookings) {
-        setCurrentBookings(bookings)
-      }
-    })
-    .catch(e => {
-      console.log(e.response);
-    })
-  }, [processingBooking])
+    if (bookings) {
+      setCurrentBookings(bookings)
+    }
+  }, [bookings])
 
   const isBooked = (id, start) => {
     if (currentBookings) {
@@ -55,6 +49,7 @@ export default function RoomModal({
       }
     }
   }
+
 
   const roomOptions = rooms?.map((room, i) => {
     const { type, name, id } = room;

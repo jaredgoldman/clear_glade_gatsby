@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import logo from "../images/logo.png"
+import logo from "../../images/logo.png"
 import * as HeaderStyles from "./Header.module.scss"
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function Header() {
 
@@ -28,17 +28,20 @@ export default function Header() {
       }           
       {loggedIn &&
         <>
-          <Link to="/about/">
+          <Link to="/about">
             About
           </Link>
-          <Link to="/user/">
+          <Link to="/user">
             Home
           </Link>
-          <Link to="/inventory/">
+          <Link to="/inventory">
             Inventory
           </Link>
-        <Link to="/schedule/">
+          <Link to="/schedule">
             Schedule
+          </Link>
+          <Link to="/media">
+            Media
           </Link>
           <Link to="/"
             onClick={() => handleLogout()}

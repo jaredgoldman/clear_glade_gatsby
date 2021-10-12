@@ -30,8 +30,8 @@
     "react-bootstrap": "^1.6.3",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.41.1",
-    "simple-react-lightbox": "^3.6.9-0"
+    "react-image-lightbox": "^5.1.4",
+    "sass": "^1.41.1"
   },
   "devDependencies": {
     "prettier": "2.3.2"

@@ -1,6 +1,6 @@
 import React from 'react'
 // import { SRLWrapper } from "simple-react-lightbox";
-// import house from "../../images/house.png"
+// import house from "../../../images/house.png"
 
 import * as AmenitiesStyles from "./Amenities.module.scss"
 

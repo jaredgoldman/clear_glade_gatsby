@@ -12,16 +12,22 @@ export function BookingProvider({ children }) {
   const [rooms, setRooms] = useState();
   const [weeks, setWeeks] = useState();
   const [bookings, setBookings] = useState();
+  const [processingBooking, setProcessingBooking] = useState(false)
 
   useEffect(() => {
     getRooms().then(data => setRooms(data))
     setWeeks(getWeeks(Date.now()))
-    getBookings().then(data => setBookings(data))
   }, [])
+
+  useEffect(() => {
+    getBookings().then(data => {
+      setBookings(data)
+    })
+  }, [processingBooking])
  
   const getRooms = async () => {
     try {
-      const res = await axios.get('/rooms');
+      const res = await axios.get('/rooms/');
       return res.data
     } catch(error) {
       console.log(error)
@@ -42,7 +48,7 @@ export function BookingProvider({ children }) {
 
   const bookRoom = async (bookingData) => {
     try {
-      const res = await axios.post('/bookings', bookingData)
+      const res = await axios.post('/bookings/', bookingData)
       return res.data
     } catch(error) {
       console.log(error);
@@ -52,7 +58,7 @@ export function BookingProvider({ children }) {
   const getBookings = async () => {
     //TODO: only retreive bookings from the present day forward
     try {
-      const res = await axios.get('/bookings');
+      const res = await axios.get('/bookings/');
       return res.data;
     } catch(error) {
       console.log(error);
@@ -77,7 +83,9 @@ export function BookingProvider({ children }) {
     weeks,
     bookings,
     bookRoom,
-    getBookings
+    getBookings,
+    processingBooking,
+    setProcessingBooking
   }
 
   return (

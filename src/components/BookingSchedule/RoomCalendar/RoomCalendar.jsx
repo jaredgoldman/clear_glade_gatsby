@@ -15,7 +15,6 @@ export default function RoomCalendar() {
       start={start}
       thursday={thursday}
       end={end}
-      // roomsAvailable={roomsAvailable}
       key={i}
     />
   })

@@ -3,7 +3,7 @@ import { useState } from "react"
 
 import "./Login.scss"
 
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Login() {
   const { login } = useAuth()

@@ -1,4 +1,4 @@
-import invImage from "../images/dairy-products.png"
+import invImage from "../../images/dairy-products.png"
 const inventoryData = [
   {
     item: "Dairy Product",
