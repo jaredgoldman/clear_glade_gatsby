@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import Lightbox from 'react-image-lightbox' 
+import * as styles from './Lightbox.module.scss'
 const URL = process.env.GATSBY_URL
 
 export default function LightboxElement({
   galleryOpen,
   setGalleryOpen,
   description,
-  images
+  collectionName,
+  handleGalleryOpen,
+  images,
+  collectionId
 }) {
+
   const imageURLs = images.map(image => `${URL}${image.url}`)
   const [photoIndex, setPhotoIndex] = useState(0)
-
 
   const handleCloseGallery = () => {
     setGalleryOpen(false)
@@ -24,8 +28,14 @@ export default function LightboxElement({
     setPhotoIndex(prevValue => ((prevValue + 1) % imageURLs.length))
   }
   return (
-    <>
-      <div>{description}</div>
+    <div className={styles.root}>
+      <div><strong>{collectionName}</strong></div>
+      <div 
+        className={styles.thumbnail}
+        onClick={() => handleGalleryOpen(collectionId)}
+      >
+        <img src={imageURLs[0]} alt="" />
+      </div>
         {galleryOpen &&
           <Lightbox
             mainSrc={imageURLs[photoIndex]}
@@ -36,6 +46,7 @@ export default function LightboxElement({
             onMovePrevRequest={() => onMovePrevRequest()}
           />
         }
-    </>
+      <div>{description}</div>
+    </div>
   )
 }
