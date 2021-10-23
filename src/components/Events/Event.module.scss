@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  border: 1px solid black;
+  width: 40%;
+  padding-top: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.event-attachment {
+  margin: 0.25rem;
+  img {
+    height: 4rem;
+    width: auto;
+  }
+}
+
+.event-heading {
+  margin-bottom: 0.25rem;
+}
+
+.event-details {
+  padding-left: 0.5rem;
+}
+
+.event-details__date {
+  font-size: 0.76rem;
+  margin-bottom: 1rem;
+}
+
+.event-details__description {
+  padding-bottom: 3rem;
+}

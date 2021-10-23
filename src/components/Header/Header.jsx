@@ -38,7 +38,7 @@ export default function Header() {
             Inventory
           </Link>
           <Link to="/schedule">
-            Schedule
+            Book A Room
           </Link>
           <Link to="/media">
             Media

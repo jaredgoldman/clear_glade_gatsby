@@ -11,46 +11,47 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  const [currentUser, setCurrentUser] = useState();
   const [loggedIn, setLoggedIn] = useState(false)
 
   const login = async (email, password) => {
-    try{
+    try {
       const user = await axios.post('/auth/local/', {
         identifier: email,
         password
       })
-      ls('jwt', user.data.jwt)
-      setCurrentUser(user.data)
+      ls('user', user.data)
       navigate('/user/')
     } catch(e) {
       console.log('error');
-      console.log(e);
+      console.log(e.response);
     }
   }
 
   const checkIfLoggedIn = () => {
-    const user = ls.get('jwt')
+    const user = ls.get('user')
     if (user) return true
     else return false
+  }
+
+  const getUser = () => {
+    return ls.get('user')
   }
 
   useEffect(() => {
     if (checkIfLoggedIn()) {
       setLoggedIn(true)
     }
-  }, [currentUser])
+  }, [])
 
   const logout = () => {
-    console.log('logout');
-    ls.remove('jwt')
+    ls.remove('user')
   }
 
   const value = {
-    currentUser,
     login,
     logout,
-    loggedIn
+    loggedIn,
+    getUser
   }
   
   return (

@@ -54,6 +54,8 @@ typings/
 # dotenv environment variable files
 .env*
 credentials.json
+client_secret.json
+token.json
 
 # gatsby files
 .cache/
