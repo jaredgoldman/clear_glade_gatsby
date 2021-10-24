@@ -21,11 +21,12 @@ export default function Announcements() {
   }, [])
 
   const announcements = posts?.map(post => {
-    const { title, content, created_at, id } = post;
+    const { title, content, created_at, id, attachments } = post;
     return <Announcement
       title={title}
       content={content}
       date={created_at}
+      attachments={attachments}
       key={id}
     />
   })

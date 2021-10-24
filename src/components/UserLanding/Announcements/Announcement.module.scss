@@ -1,7 +1,26 @@
 .announcement {
+  display: flex;
+  justify-content: space-between;
   margin: 20px 0;
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
-  width: 100%;
+  min-width: 75%;
+}
+
+.announcement-data {
+  margin-right: 2rem;
+}
+
+.attachment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 10rem;
+
+  img {
+    height: auto;
+    width: 10rem;
+  }
 }

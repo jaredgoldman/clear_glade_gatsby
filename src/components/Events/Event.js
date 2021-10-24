@@ -11,7 +11,6 @@ export default function Event({
 }) {
 
   const attatchment = attachments[0]
-  console.log(new Date(start.dateTime));
 
   const dateRange = `${format(new Date(start.dateTime), 'PPp')} - ${format(new Date(end.dateTime), 'p')}`;
 
@@ -33,7 +32,6 @@ export default function Event({
         <div className={styles.eventDetails__description}>
           {description}
         </div>
-      
       </div>
     </div>
   )
