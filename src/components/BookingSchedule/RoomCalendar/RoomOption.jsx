@@ -3,13 +3,13 @@ import './RoomOption.scss'
 import { useAuth } from '../../../contexts/AuthContext';
 
 export default function RoomOption({
-  type,
-  name,
   weekInfo,
   id,
   setShowConfirm,
   setSelectedRoom,
-  booked
+  booked,
+  roomName,
+  type
 }) {
   
   const { currentUser } = useAuth()
@@ -21,7 +21,9 @@ export default function RoomOption({
       firstName: currentUser.user.firstName,
       lastName: currentUser.user.lastName,
       email: currentUser.user.email,
-      roomId: id
+      roomId: id,
+      roomName,
+      type
     });
     setShowConfirm(true)
   }
@@ -32,7 +34,7 @@ export default function RoomOption({
       onClick={() => handleSetSelectedRoom()}
     >
       {booked && <div>{`Booked by ${currentUser.user.firstName}`}</div>}
-      {type} {name}
+      {roomName}
     </div>
   )
 }

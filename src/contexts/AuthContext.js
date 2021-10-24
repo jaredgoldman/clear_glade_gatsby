@@ -14,6 +14,15 @@ export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
 
+  useEffect(() => {
+    const user = ls.get('user')
+    if (user) {
+      setCurrentUser(user)
+      setLoggedIn(true)
+    }
+  }, [])
+
+
   const login = async (email, password) => {
     try {
       const user = await axios.post('/auth/local/', {
@@ -27,21 +36,7 @@ export function AuthProvider({ children }) {
       console.log(e.response);
     }
   }
-
-
-
-  const getUser = () => {
-    return ls.get('user')
-  }
-
-  useEffect(() => {
-    const user = ls.get('user')
-    if (user) {
-      setCurrentUser(user)
-      setLoggedIn(true)
-    }
-  }, [])
-
+ 
   const logout = () => {
     ls.remove('user')
   }
@@ -50,7 +45,6 @@ export function AuthProvider({ children }) {
     login,
     logout,
     loggedIn,
-    getUser,
     currentUser
   }
   

@@ -7,6 +7,7 @@ export default function ConfirmRoomModal({
   setShowConfirm,
   showConfirm,
   selectedRoomData,
+  handleCloseModal
 }) {
 
   const { bookRoom, setProcessingBooking } = useBooking();
@@ -18,6 +19,9 @@ export default function ConfirmRoomModal({
   const handleBookRoom = () => {
     bookRoom(selectedRoomData)
     setProcessingBooking((prevValue) => !prevValue)
+    handleCloseModal()
+    setShowConfirm(false)
+    // TODO: add snackbar confirmation notifcation
   }
 
   return (

@@ -28,11 +28,14 @@ export default function Header() {
       }           
       {loggedIn &&
         <>
+          <Link to="/user">
+            Home
+          </Link>
           <Link to="/about">
             About
           </Link>
-          <Link to="/user">
-            Home
+          <Link to="/events">
+            Schedule
           </Link>
           <Link to="/inventory">
             Inventory

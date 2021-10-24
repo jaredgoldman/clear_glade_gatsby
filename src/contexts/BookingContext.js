@@ -50,7 +50,6 @@ export function BookingProvider({ children }) {
   }
 
   const bookRoom = async (bookingData) => {
-    console.log(bookingData);
     try {
       const res = await axios.post('/bookings/', bookingData)
       sendConfirmationEmail(res.data)

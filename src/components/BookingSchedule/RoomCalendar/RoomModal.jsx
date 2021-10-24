@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import RoomOption from "./RoomOption";
@@ -11,55 +11,33 @@ import ConfirmRoomModal from "./ConfirmRoomModal";
 export default function RoomModal({
   showModal,
   setShowModal,
-  weekInfo
+  weekInfo,
+  bookings
 }) {
   
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedRoomData, setSelectedRoom] = useState()
-  const [currentBookings, setCurrentBookings] = useState()
-  const { rooms, bookings, processingBooking, setProcessingBooking } = useBooking()
+  const { rooms, processingBooking, setProcessingBooking } = useBooking()
 
-  // refresh bookings when processing a new booking
-  useEffect(() => {
+  const isBooked = (id) => {
     if (bookings) {
-      setCurrentBookings(bookings)
-    }
-  }, [bookings])
-
-  const isBooked = (id, start) => {
-    if (currentBookings) {
-      for (let booking of currentBookings) {
-        // TODO: Find out why my first approach mutated the data
-        // const bookingCopy = {...booking}
-        // console.log(bookingCopy);
-        // console.log('booking id: ', booking.roomId);
-        // console.log('room id: ', id)
-        // console.log('id comparison: ', (booking.roomId === id));
-        // console.log('start date: ', new Date(start));
-        // console.log('booking date: ', new Date(booking.start))
-        // console.log('date comparison: ',  Number(new Date(start)) == Number(new Date(booking.start)));
-  
-      // return ((booking.roomId === id) && (Number(new Date(start)) === Number(new Date(booking.start))))
-  
+      for (let booking of bookings) {
         const correctId = booking.roomId === id;
-        const correctDate = Number(new Date(start)) == Number(new Date(booking.start));
-        if (correctId && correctDate) {
+        if (correctId) {
           return true
         }
       }
     }
   }
 
-
   const roomOptions = rooms?.map((room, i) => {
-    const { type, name, id } = room;
+    const { roomName, id, type } = room;
 
-    const booked = isBooked(id, weekInfo.start)
+    const booked = isBooked(id)
 
     return (
       <RoomOption 
-        type={type}
-        name={name} 
+        roomName={roomName} 
         id={id}
         weekInfo={weekInfo}
         setShowConfirm={setShowConfirm}
@@ -67,6 +45,7 @@ export default function RoomModal({
         booked={booked}
         setProcessingBooking={setProcessingBooking}
         processingBooking={processingBooking}
+        type={type}
         key={id}
       />
     )
@@ -83,6 +62,7 @@ export default function RoomModal({
         setShowConfirm={setShowConfirm}
         selectedRoomData={selectedRoomData}
         setProcessingBooking={setProcessingBooking}
+        handleCloseModal={handleCloseModal}
       />
       <Modal show={showModal}>
         <Modal.Header>
