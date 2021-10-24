@@ -12,6 +12,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
 
   const [loggedIn, setLoggedIn] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
 
   const login = async (email, password) => {
     try {
@@ -27,18 +28,16 @@ export function AuthProvider({ children }) {
     }
   }
 
-  const checkIfLoggedIn = () => {
-    const user = ls.get('user')
-    if (user) return true
-    else return false
-  }
+
 
   const getUser = () => {
     return ls.get('user')
   }
 
   useEffect(() => {
-    if (checkIfLoggedIn()) {
+    const user = ls.get('user')
+    if (user) {
+      setCurrentUser(user)
       setLoggedIn(true)
     }
   }, [])
@@ -51,7 +50,8 @@ export function AuthProvider({ children }) {
     login,
     logout,
     loggedIn,
-    getUser
+    getUser,
+    currentUser
   }
   
   return (

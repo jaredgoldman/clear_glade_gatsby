@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { addWeeks, startOfWeek, endOfWeek, nextThursday } from 'date-fns';
 import axios from 'axios';
+import UseEmail from '../hooks/UseEmail';
 
 const BookingContext = React.createContext();
 
@@ -13,6 +14,8 @@ export function BookingProvider({ children }) {
   const [weeks, setWeeks] = useState();
   const [bookings, setBookings] = useState();
   const [processingBooking, setProcessingBooking] = useState(false)
+
+  const { sendConfirmationEmail } = UseEmail()
 
   useEffect(() => {
     getRooms().then(data => setRooms(data))
@@ -47,8 +50,10 @@ export function BookingProvider({ children }) {
   }
 
   const bookRoom = async (bookingData) => {
+    console.log(bookingData);
     try {
       const res = await axios.post('/bookings/', bookingData)
+      sendConfirmationEmail(res.data)
       return res.data
     } catch(error) {
       console.log(error);

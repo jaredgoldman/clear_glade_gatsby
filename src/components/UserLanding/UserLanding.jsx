@@ -9,17 +9,11 @@ import Amenities from "./Amenities"
 
 export default function UserLanding() {
 
-  const { getUser } = useAuth()
-  const [currentUser, setCurrentUser] = useState()
-
-  useEffect(() => {
-    const userData = getUser()
-    setCurrentUser(userData.user)
-  }, [])
+  const { currentUser } = useAuth()
 
   return (
     <div className={UserLandingStyles.userLanding}>
-      <h1>{`Welcome, ${currentUser?.firstName}`}</h1>
+      <h1>{`Welcome, ${currentUser?.user.firstName}`}</h1>
       <div className={UserLandingStyles.content}>
         <Announcements />
         <Rules/>

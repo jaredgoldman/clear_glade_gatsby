@@ -64,7 +64,7 @@ module.exports = {
         singleEvents: true,
         orderBy: 'startTime',
       }
-    }
+    },
   ],
   proxy: {
     prefix: "/*",
