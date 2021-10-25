@@ -1,39 +1,42 @@
-.landing-container {
+.root {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.main-landing-image {
+.hero {
   background-image: url(../../images/pathway.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
   width: 100%;
-  height: 45em;
+  height: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.welcome {
+.hero__welcome {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #3e5441;
+  color: #141414;
   background: rgba(253, 248, 239, 0.73);
-  opacity: 0.7;
   padding: 5em;
   border-radius: 10px;
-  width: 65%;
+  width: 80%;
+  font-family: var(--hero_font);
+  white-space: nowrap;
 
-  &_heading {
+  &--heading {
     font-size: 50px;
+    opacity: 1;
   }
 
-  &_sub-heading {
+  &--sub-heading {
     font-size: 40px;
+    opacity: 1;
   }
 }
 
@@ -42,6 +45,8 @@
   padding: 3em;
   background-color: #d3e8fc;
   align-items: center;
+  height: 33%;
+  font-family: var(--default_font);
 
   &_text {
     display: flex;
@@ -56,8 +61,11 @@
 .house {
   background-image: url(../../images/house.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
   width: 100%;
-  height: 45em;
+  height: 50rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

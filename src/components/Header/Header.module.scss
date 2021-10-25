@@ -1,20 +1,38 @@
-.nav {
+.root {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 1.5em;
-  height: 15%;
+  padding: 1rem 2rem;
+  height: 6rem;
+  border-bottom: 1px solid black;
+
+  a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+
+    &:hover {
+      background-color: rgb(226, 226, 226);
+    }
+  }
 }
 
 .navLogoImage {
   display: flex;
   align-items: center;
-}
-.logoImage {
-  width: 90px;
-  padding-left: 1em;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-family: var(--hero_font);
 }
 
-.buttons > a {
-  margin: .5em;
+.logoImage {
+  width: 90px;
+  height: auto;
+  margin-left: 1rem;
+}
+
+.buttons {
+  font-size: 1.15rem;
+  font-family: var(--default_font);
 }

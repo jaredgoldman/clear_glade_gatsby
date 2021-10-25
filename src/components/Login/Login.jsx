@@ -39,6 +39,7 @@ export default function Login() {
           ></input>
           <label>Password</label>
           <input
+            type='password'
             onChange={(e) => handleSetPassword(e)}
           ></input>
           <button type="submit">Submit</button>

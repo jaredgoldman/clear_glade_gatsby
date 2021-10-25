@@ -2,6 +2,7 @@ import React from "react"
 import Room from "./Room"
 import roomImage from "../../../images/room.png"
 import { useBooking } from "../../../contexts/BookingContext"
+import * as styles from "./RoomList.module.scss"
 
 export default function RoomList() {
 
@@ -18,11 +19,11 @@ export default function RoomList() {
   })
 
   return (
-    <>
+    <div className={styles.root}>
       <h2>Our Rooms</h2>
       <div>
         {roomSelection}
       </div>
-    </>
+    </div>
   )
 }

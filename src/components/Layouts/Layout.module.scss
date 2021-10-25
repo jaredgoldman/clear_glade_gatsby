@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Emblema+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Emblema+One&family=Permanent+Marker&display=swap');
+
+:root {
+  --default_font: 'Emblema One', cursive;
+  --hero_font: 'Permanent Marker', cursive;
+}
+
 .root {
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
 }

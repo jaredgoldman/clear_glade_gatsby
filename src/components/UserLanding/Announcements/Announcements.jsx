@@ -20,20 +20,22 @@ export default function Announcements() {
     fetchAnnoucments()
   }, [])
 
-  const announcements = posts?.map(post => {
-    const { title, content, created_at, id, attachments } = post;
-    return <Announcement
-      title={title}
-      content={content}
-      date={created_at}
-      attachments={attachments}
-      key={id}
-    />
+  const announcements = posts?.reverse().map((post, i) => {
+    if (i <= 5) {
+      const { title, content, created_at, id, attachments } = post;
+      return <Announcement
+        title={title}
+        content={content}
+        date={created_at}
+        attachments={attachments}
+        key={id}
+      />
+    }
   })
 
   return (
     <div className={AnnouncementsStyles.announcements}>
-      <h2 className={AnnouncementsStyles.heading}>- Announcements -</h2>
+      <h2 className={AnnouncementsStyles.heading}>Recent Announcements</h2>
       {announcements}
     </div>
   )

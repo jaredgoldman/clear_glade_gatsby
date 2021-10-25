@@ -10,18 +10,13 @@ export default function Event({
   attachments
 }) {
 
-  const attatchment = attachments[0]
+  const attachment = attachments ? attachments[0] : ''
 
   const dateRange = `${format(new Date(start.dateTime), 'PPp')} - ${format(new Date(end.dateTime), 'p')}`;
 
   return (
 
     <div className={styles.root}>
-      <div className={styles.eventAttachment}>
-        <img 
-          src={`https://drive.google.com/uc?export=view&id=${attatchment.fileId}`} alt=""
-        />
-      </div>
       <div className={styles.eventDetails}>
         <h4 className={styles.eventHeading}>
           {summary}
@@ -32,6 +27,13 @@ export default function Event({
         <div className={styles.eventDetails__description}>
           {description}
         </div>
+        {attachment &&
+        <div className={styles.eventAttachment}>
+          <img 
+            src={`https://drive.google.com/uc?export=view&id=${attachment.fileId}`} alt=""
+          />
+        </div>
+        } 
       </div>
     </div>
   )

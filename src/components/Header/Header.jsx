@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import logo from "../../images/logo.png"
-import * as HeaderStyles from "./Header.module.scss"
+import * as styles from "./Header.module.scss"
 import { useAuth } from '../../contexts/AuthContext'
 
 export default function Header() {
@@ -13,14 +13,16 @@ export default function Header() {
   }
 
   return (
-    <nav className={HeaderStyles.nav}>
-      <Link to="/">
-        <div className={HeaderStyles.navLogoImage}>
-          <p>Clear Glade Farm</p>
-          <img src={logo} alt="" className={HeaderStyles.logoImage} />
-        </div>
-      </Link>
-      <div className={HeaderStyles.buttons}>
+    <nav className={styles.root}>
+      <div className={styles.navLogoImage}>
+        <Link to="/">
+          <div>
+            <div>Clear Glade Farm</div>
+          </div>
+        </Link>
+      <img src={logo} alt="" className={styles.logoImage} />
+      </div>
+      <div className={styles.buttons}>
       {!loggedIn &&
         <Link to="/login">
           Login

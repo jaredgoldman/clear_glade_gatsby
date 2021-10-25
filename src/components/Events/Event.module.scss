@@ -1,10 +1,11 @@
 .root {
   display: flex;
   border: 1px solid black;
-  width: 40%;
+  width: 90%;
   padding-top: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  max-width: 70rem;
 }
 
 .event-attachment {

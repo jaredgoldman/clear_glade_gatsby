@@ -1,6 +1,6 @@
 import React from "react";
 import Week from "./Week"
-import * as RoomCalendarStyles from "./RoomCalendar.module.scss"
+import * as styles from "./RoomCalendar.module.scss"
 import { useBooking } from "../../../contexts/BookingContext";
 
 
@@ -37,8 +37,8 @@ export default function RoomCalendar() {
 
   return (
     <div>
-      <div className={RoomCalendarStyles.weeksContainer}>
-        <div className={RoomCalendarStyles.weeks}>
+      <div className={styles.weeksContainer}>
+        <div className={styles.weeks}>
           {schedule}
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function Events({
   return (
     <div className={styles.root}>
       <h1>Upcoming Events</h1>
-      <div>
+      <div className={styles.events}>
         {upcomingEvents}  
       </div>
     </div>

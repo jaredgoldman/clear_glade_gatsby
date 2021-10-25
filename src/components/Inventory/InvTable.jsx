@@ -33,7 +33,7 @@ export default function InvTable({
         <th>Quantity</th>
         <th>Price</th>
         <th>Description</th>
-        <th>Image</th>
+        {/* <th>Image</th> */}
       </thead>
       <tbody>
         {inventoryRows}
