@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import announcementData from "../../../mocks/announcementData";
+// import announcementData from "../../../mocks/announcementData";
 import Announcement from "./Announcement"
 import axios from "axios";
 
-import * as AnnouncementsStyles from "./Announcements.module.scss"
+import * as styles from "./Announcements.module.scss"
 
 export default function Announcements() {
   const [posts, setPosts] = useState()
@@ -34,8 +34,8 @@ export default function Announcements() {
   })
 
   return (
-    <div className={AnnouncementsStyles.announcements}>
-      <h2 className={AnnouncementsStyles.heading}>Recent Announcements</h2>
+    <div className={styles.announcements}>
+      <h2 className={styles.heading}>Recent Announcements</h2>
       {announcements}
     </div>
   )

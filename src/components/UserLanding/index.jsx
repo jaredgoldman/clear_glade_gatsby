@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import * as styles from "./UserLanding.module.scss"
+import * as styles from "./index.module.scss"
 
 import { useAuth } from '../../contexts/AuthContext'
 
@@ -13,11 +13,11 @@ export default function UserLanding() {
 
   return (
     <div className={styles.root}>
-      <h2>{`Welcome, ${currentUser?.user.firstName}`}</h2>
+      <h2 className={styles.heading}>{`Welcome, ${currentUser?.user.firstName}`}</h2>
       <div className={styles.content}>
         <Announcements />
-        <Rules/>
         <Amenities/>
+        <Rules/>
       </div>
     </div>
   )

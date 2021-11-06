@@ -17,7 +17,7 @@ export default function Header() {
       <div className={styles.navLogoImage}>
         <Link to="/">
           <div>
-            <div>Clear Glade Farm</div>
+            <div className={styles.heading}>Clear Glade Farm</div>
           </div>
         </Link>
       <img src={logo} alt="" className={styles.logoImage} />

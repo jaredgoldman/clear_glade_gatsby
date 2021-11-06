@@ -1,12 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Emblema+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Emblema+One&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Encode+Sans:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 :root {
   --default_font: 'Emblema One', cursive;
-  --hero_font: 'Permanent Marker', cursive;
+  --hero_font: 'Inter', sans-serif;
+  // --content_font: 'Comfortaa', cursive;
+  --content_font: 'Comfortaa', cursive;
+  --beige: rgb(252, 247, 227);
+  --anchor: rgb(168, 147, 108);
+  --card-background: rgb(247, 245, 236);
+  --nav-background: #effdef;
+  --light-blue: #d3e8fc;
 }
 
 .root {
   display: flex;
   flex-direction: column;
+
+  div {
+    font-family: var(--content_font);
+  }
+
+  h2 {
+    font-family: var(--hero_font);
+  }
 }

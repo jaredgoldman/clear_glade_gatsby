@@ -15,19 +15,19 @@ export default function Announcement({
   const formattedDate = format((new Date(date)), 'EEEE, LLL do - p')
 
   return (
-    <div className={styles.announcement}>
-      <div className={styles.announcementData}>
-        <h2>{title}</h2>
-        <p className="announcement_content">{content}</p>
-        <div className="announcement_date">
-          <p>{formattedDate}</p>
-        </div>
-      </div>
+    <div className={styles.root}>
       {attachments && 
         <div className={styles.attachment}>
           <img src={attachmentURL} alt="" />
         </div>
       }
+      <div className={styles.body}>
+        <h3 className={styles.heading}>{title}</h3>
+        <p className={styles.content}>{content}</p>
+        <div className={styles.date}>
+          <p>{formattedDate}</p>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { GoogleMap, LoadScript } from "@react-google-maps/api"
+import * as styles from "./MapContainer.module.scss"
 const googleMapsApiKey = process.env.GATSBY_G_API
 
 export default function MapContainer() {
@@ -15,7 +16,7 @@ export default function MapContainer() {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <LoadScript googleMapsApiKey={googleMapsApiKey}>
         <GoogleMap 
           mapContainerStyle={mapStyles}
@@ -23,7 +24,7 @@ export default function MapContainer() {
           center={defaultCenter}
         />
       </LoadScript>
-    </>
+    </div>
   )
 }
 
