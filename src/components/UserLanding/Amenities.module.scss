@@ -1,12 +1,18 @@
 .root {
   width: 100%;
-  max-width: 90rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   background-color: var(--card-background);
+}
+
+.content {
+  max-width: 90rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heading {
@@ -39,14 +45,14 @@
 }
 
 .amenities-description {
-  padding: 1.25rem;
+  padding: 1.25rem 1rem 0 1rem;
 }
 
 .amenities-images {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 97%;
+  justify-items: center;
   padding-top: 0.75rem;
 }
 

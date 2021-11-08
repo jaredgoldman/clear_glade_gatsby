@@ -5,7 +5,9 @@ import Layout from '../components/Layouts/Layout'
 
 export default function events(...props) {
 
-  const events = props[0].data.allCalendarEvent.nodes
+  // const events = props[0].data.allCalendarEvent.nodes
+
+  const events = ''
 
   return (
     <Layout>
@@ -14,25 +16,25 @@ export default function events(...props) {
   )
 }
 
-export const query = graphql`{
-  allCalendarEvent {
-    nodes {
-      description
-      summary
-      start {
-        dateTime
-      }
-      end {
-        dateTime
-      }
-      attachments {
-        fileUrl
-        fileId
-        iconLink
-        title
-      }
-      id
-  	}
-  }
-}
-`
+// export const query = graphql`{
+//   allCalendarEvent {
+//     nodes {
+//       description
+//       summary
+//       start {
+//         dateTime
+//       }
+//       end {
+//         dateTime
+//       }
+//       attachments {
+//         fileUrl
+//         fileId
+//         iconLink
+//         title
+//       }
+//       id
+//   	}
+//   }
+// }
+// `

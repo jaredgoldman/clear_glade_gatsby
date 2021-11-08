@@ -1,7 +1,7 @@
 import React from 'react'
 // import { get } from 'lodash'
 import Event from './Event'
-import * as styles from './Events.module.scss'
+import * as styles from './index.module.scss'
 
 export default function Events({
   events
@@ -21,9 +21,12 @@ export default function Events({
       />
     )
   })
+
   return (
     <div className={styles.root}>
-      <h1>Upcoming Events</h1>
+      <div className={styles.heading}> 
+        <h1>Upcoming Events</h1>
+      </div>
       <div className={styles.events}>
         {upcomingEvents}  
       </div>
