@@ -34,9 +34,11 @@ export default function Announcements() {
   })
 
   return (
-    <div className={styles.announcements}>
+    <div className={styles.root}>
       <h2 className={styles.heading}>Recent Announcements</h2>
-      {announcements}
+      <div className={styles.announcements}>
+        {announcements}
+      </div>
     </div>
   )
 }

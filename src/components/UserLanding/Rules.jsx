@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import * as styles from "./Rules.module.scss"
+import image from "../../images/house.png"
 
 export default function Rules() {
   const [showRules, setShowRules] = useState({
@@ -19,8 +20,9 @@ export default function Rules() {
 
   return (
     <div className={styles.root}>
+      <div className={styles.rulesContainer}>
       <div className={styles.heading}>
-        <h2>Rules Overview</h2>
+        <h2>Guidelines</h2>
       </div>
       <div className={styles.body}>
         <div className={styles.description}>
@@ -29,59 +31,63 @@ export default function Rules() {
         <div className={styles.tabs}>
           <button
             onClick={() => handleShowRules('lodging')}
-          >Lodging Rules</button>
+          >See Lodging Guidelines</button>
           <button
             onClick={() => handleShowRules('property')}
-          >Property Rules</button>
+          >See Property Guidelines</button>
           <button
             onClick={() => handleShowRules('facilities')}
-          >Facilities Rules</button>
+          >See Facilities Guidelines</button>
         </div>
-        {showRules.lodging &&
+          {showRules.lodging &&
+            <div className={styles.rules}>
+              <h3>Lodging Guidelines</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <ul>
+                <li>Rule 1</li>
+                <li>Rule 4</li>
+                <li>Rule 3</li>
+                <li>Rule 4</li>
+                <li>Rule 5</li>
+                <li>Rule 6</li>
+                <li>Rule 7</li>
+              </ul>
+            </div>
+          }
+          {showRules.property &&
           <div className={styles.rules}>
-            <h3>Lodging Rules</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <ul>
-              <li>Rule 1</li>
-              <li>Rule 4</li>
-              <li>Rule 3</li>
-              <li>Rule 4</li>
-              <li>Rule 5</li>
-              <li>Rule 6</li>
-              <li>Rule 7</li>
-            </ul>
-          </div>
-        }
-        {showRules.property &&
-        <div className={styles.rules}>
-            <h3>Property Rules</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <ul>
-              <li>Rule 1</li>
-              <li>Rule 4</li>
-              <li>Rule 3</li>
-              <li>Rule 4</li>
-              <li>Rule 5</li>
-              <li>Rule 6</li>
-              <li>Rule 7</li>
-            </ul>
-          </div>
-        }
-        {showRules.facilities &&
-          <div className={styles.rules}>
-            <h3>Facilities Rules</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <ul>
-              <li>Rule 1</li>
-              <li>Rule 4</li>
-              <li>Rule 3</li>
-              <li>Rule 4</li>
-              <li>Rule 5</li>
-              <li>Rule 6</li>
-              <li>Rule 7</li>
-            </ul>
-          </div>
-        }
+              <h3>Property Guidelines</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <ul>
+                <li>Rule 1</li>
+                <li>Rule 4</li>
+                <li>Rule 3</li>
+                <li>Rule 4</li>
+                <li>Rule 5</li>
+                <li>Rule 6</li>
+                <li>Rule 7</li>
+              </ul>
+            </div>
+          }
+          {showRules.facilities &&
+            <div className={styles.rules}>
+              <h3>Facilities Guidelines</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <ul>
+                <li>Rule 1</li>
+                <li>Rule 4</li>
+                <li>Rule 3</li>
+                <li>Rule 4</li>
+                <li>Rule 5</li>
+                <li>Rule 6</li>
+                <li>Rule 7</li>
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+      <div className={styles.imageContainer}>
+        <img src={image} />
       </div>
     </div>
   )

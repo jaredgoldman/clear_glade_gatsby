@@ -1,10 +1,13 @@
+.root {
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
 .announcements {
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 60rem;
-  margin-bottom: 5rem;
+  width: 100%;
 }
 
 .heading {
@@ -12,4 +15,7 @@
   margin-bottom: 1.75rem;
   border-radius: 0.75rem;
   font-family: var(--hero_font);
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
 }

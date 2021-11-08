@@ -1,6 +1,14 @@
 .root {
-  width: 90%;
-  max-width: 70rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.body {
+  width: 100%;
+}
+
+.rules-container {
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -8,20 +16,20 @@
   margin-bottom: 2.2rem;
 }
 
-.body {
-  width: 100%;
-}
-
 .heading {
   width: 100%;
-  text-align: center;
-  padding-top: 0.25rem;
+  text-align: left;
   margin-bottom: 1rem;
+
+  h2 {
+    font-size: 4rem;
+  }
 }
 
 .description {
-  padding: 1rem 2rem;
+  padding-bottom: 1rem;
 }
+
 .tabs {
   display: flex;
   justify-content: center;
@@ -40,9 +48,19 @@
 }
 
 .rules {
-  padding: 1rem 2rem;
+  margin-top: 1.5rem;
 
   h3 {
     margin-bottom: 1rem;
+  }
+}
+
+.image-container {
+  width: 45%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
