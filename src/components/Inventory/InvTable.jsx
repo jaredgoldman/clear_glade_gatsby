@@ -1,7 +1,7 @@
 import React from "react"
 import InvTableRow from "./InvTableRow"
 
-import "./InvTable.scss"
+import * as styles from "./InvTable.module.scss"
 
 export default function InvTable({
   rows
@@ -27,12 +27,12 @@ export default function InvTable({
   })
 
   return (
-    <table className="table">
-      <thead>
+    <table className={styles.table}>
+      <thead className={styles.tableHeading}>
         <th>Item</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>Description</th>
+        <th></th>
         {/* <th>Image</th> */}
       </thead>
       <tbody>

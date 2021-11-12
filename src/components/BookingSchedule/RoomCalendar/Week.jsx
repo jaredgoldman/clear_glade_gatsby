@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { format } from "date-fns"
 import RoomModal from './RoomModal'
-import * as WeekStyles from "./Week.module.scss"
+import * as styles from "./Week.module.scss"
 
 export default function Week({
   start,
@@ -43,7 +43,7 @@ export default function Week({
   const dateRange = `${format(thursday, 'E LLL do')} - ${format(end, 'E LLL do')}`;
 
   return (
-    <div className={WeekStyles.week}>
+    <div className={styles.root}>
       <RoomModal 
         showModal={showModal}
         setShowModal={setShowModal}
@@ -52,9 +52,13 @@ export default function Week({
       />
       <h3>{dateRange}</h3>
       <div>{`There are currently ${availabilites.rooms} rooms available and ${availabilites.campSites} campsite available`}</div>
-      <button
-        onClick={() => handleShowModal()}
-      >Book A Room</button>
+      <div className={styles.buttonContainer}>
+        <button
+          className={styles.button}
+          onClick={() => handleShowModal()}
+        >Book a room this week
+        </button>
+      </div>
     </div>
   )
 }

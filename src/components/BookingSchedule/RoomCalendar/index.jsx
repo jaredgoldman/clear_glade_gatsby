@@ -1,6 +1,6 @@
 import React from "react";
 import Week from "./Week"
-import * as styles from "./RoomCalendar.module.scss"
+import * as styles from "./index.module.scss"
 import { useBooking } from "../../../contexts/BookingContext";
 
 

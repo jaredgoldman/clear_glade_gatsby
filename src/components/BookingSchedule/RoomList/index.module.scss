@@ -1,0 +1,12 @@
+.root {
+}
+
+.heading {
+  padding: 1rem 2rem;
+}
+
+.rooms {
+  &:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+}

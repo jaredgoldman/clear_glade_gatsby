@@ -21,7 +21,6 @@ export const spreadsheetQuery = graphql`
           price
           quantity
           description
-          image
         }
       }
     }

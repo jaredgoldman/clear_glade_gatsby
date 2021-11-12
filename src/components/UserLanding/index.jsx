@@ -15,9 +15,9 @@ export default function UserLanding() {
     <div className={styles.root}>
       <h2 className={styles.heading}>{`Welcome, ${currentUser?.user.firstName}`}</h2>
       <div className={styles.content}>
-        <Announcements />
         <Amenities/>
         <Rules/>
+        <Announcements />
       </div>
     </div>
   )

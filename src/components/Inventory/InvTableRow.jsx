@@ -1,23 +1,20 @@
 import React from "react"
-import "./InvTableRow.scss"
+import * as styles from  "./InvTableRow.module.scss"
 
 export default function InvTableRow({
   item,
   quantity,
   price,
   description,
-  image
+  // image
 }) {
 
   return (
     <tr>
-      <td>{item}</td>
-      <td>{quantity}</td>
-      <td>${price}</td>
-      <td>{description}</td>
-      {/* <td className="img-row">
-        <img src='/images/dairy-products.png' className="product-image"/>
-      </td> */}
+      <td className={styles.item}><strong>{item}</strong></td>
+      <td className={styles.quantity}>{quantity}</td>
+      <td className={styles.price}>${price}</td>
+      <td className={styles.description}>{description}</td>
     </tr>
   )
 }

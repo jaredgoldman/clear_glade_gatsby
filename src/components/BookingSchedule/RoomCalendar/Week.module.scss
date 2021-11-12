@@ -1,6 +1,19 @@
-.week {
+.root {
   margin: 20px;
   padding: 20px;
+  background-color: var(--card-background);
+  border-radius: 10px;
   border: 1px solid black;
-  border-radius: 18px;
+  text-align: center;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin-top: 1rem;
+  background-color: white;
 }
