@@ -35,7 +35,7 @@ export default function RoomOption({
       disabled={booked}
     >
       {booked ? 
-        <div>{`${roomName} currently booked by ${currentUser.user.firstName}`}</div> 
+        <div>{`${roomName} currently booked by ${currentUser.user.firstName} ${currentUser.user.lastName}`}</div> 
       : 
         <div>{`Book ${roomName}`}</div>
       }

@@ -6,7 +6,6 @@ import RoomOption from "./RoomOption";
 import { useBooking } from "../../../contexts/BookingContext";
 
 import * as styles from "./RoomModal.module.scss"
-import ConfirmRoomModal from "./ConfirmRoomModal";
 
 export default function RoomModal({
   showModal,
@@ -17,7 +16,7 @@ export default function RoomModal({
   
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedRoomData, setSelectedRoom] = useState()
-  const { rooms, processingBooking, setProcessingBooking } = useBooking()
+  const { rooms, processingBooking, setProcessingBooking, bookRoom } = useBooking()
 
   const isBooked = (id) => {
     if (bookings) {
@@ -52,18 +51,26 @@ export default function RoomModal({
   })
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowModal(false)
+    setShowConfirm(false)
+  }
+
+  const handleCancelConfirm = () => {
+    setShowConfirm(false)
+  }
+
+  const handleBookRoom = () => {
+    bookRoom(selectedRoomData)
+    setProcessingBooking((prevValue) => !prevValue)
+    handleCloseModal() // Remove this?
+    setTimeout(() => {
+      setShowConfirm(false)
+    }, 1000)
+    // TODO: add snackbar confirmation notifcation
   }
 
   return (
     <div className={styles.root}>
-      <ConfirmRoomModal 
-        showConfirm={showConfirm}
-        setShowConfirm={setShowConfirm}
-        selectedRoomData={selectedRoomData}
-        setProcessingBooking={setProcessingBooking}
-        handleCloseModal={handleCloseModal}
-      />
       <Modal show={showModal} size="lg">
         <Modal.Header>
           Book A Room:
@@ -74,8 +81,25 @@ export default function RoomModal({
           </div>
         </Modal.Body>
         <Modal.Footer>
+          {showConfirm && 
+            <>
+              <Button
+                onClick={() => handleCancelConfirm()}
+                variant="secondary"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => handleBookRoom()}    
+                variant="primary"  
+              >
+                Confirm Booking
+              </Button>
+            </>
+          }
           <Button
             onClick={() => handleCloseModal()}
+            disabled={showConfirm}
           >
             Close
           </Button>
