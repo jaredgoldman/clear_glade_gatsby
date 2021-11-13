@@ -26,12 +26,13 @@ export default function ConfirmRoomModal({
 
   return (
     <Modal show={showConfirm}>
-      <div>{}</div>
       <Button
-        onClick={() => handleBookRoom()}      
+        onClick={() => handleBookRoom()}    
+        variant="primary"  
       >Confirm Booking</Button>
       <Button
         onClick={() => handleCancelConfirm()}
+        varint="secondary"
       >Cancel
       </Button>
     </Modal>

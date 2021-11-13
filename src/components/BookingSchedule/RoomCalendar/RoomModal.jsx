@@ -5,7 +5,7 @@ import RoomOption from "./RoomOption";
 // import rooms from '../../../mocks/roomData'
 import { useBooking } from "../../../contexts/BookingContext";
 
-import * as RoomModalStyles from "./RoomModal.module.scss"
+import * as styles from "./RoomModal.module.scss"
 import ConfirmRoomModal from "./ConfirmRoomModal";
 
 export default function RoomModal({
@@ -56,7 +56,7 @@ export default function RoomModal({
   }
 
   return (
-    <>
+    <div className={styles.root}>
       <ConfirmRoomModal 
         showConfirm={showConfirm}
         setShowConfirm={setShowConfirm}
@@ -64,12 +64,12 @@ export default function RoomModal({
         setProcessingBooking={setProcessingBooking}
         handleCloseModal={handleCloseModal}
       />
-      <Modal show={showModal}>
+      <Modal show={showModal} size="lg">
         <Modal.Header>
           Book A Room:
         </Modal.Header>
         <Modal.Body>
-          <div className={RoomModalStyles.roomOptions}>
+          <div className={styles.roomOptions}>
             {rooms && roomOptions}
           </div>
         </Modal.Body>
@@ -81,6 +81,6 @@ export default function RoomModal({
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   )
 }

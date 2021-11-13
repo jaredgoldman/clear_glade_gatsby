@@ -1,5 +1,5 @@
 import React from 'react'
-import './RoomOption.scss'
+import * as styles from './RoomOption.module.scss'
 import { useAuth } from '../../../contexts/AuthContext';
 
 export default function RoomOption({
@@ -29,12 +29,16 @@ export default function RoomOption({
   }
   
   return (
-    <div 
-      className="room-option"
+    <button
+      className={styles.root}
       onClick={() => handleSetSelectedRoom()}
+      disabled={booked}
     >
-      {booked && <div>{`Booked by ${currentUser.user.firstName}`}</div>}
-      {roomName}
-    </div>
+      {booked ? 
+        <div>{`${roomName} currently booked by ${currentUser.user.firstName}`}</div> 
+      : 
+        <div>{`Book ${roomName}`}</div>
+      }
+    </button>
   )
 }

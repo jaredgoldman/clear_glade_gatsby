@@ -4,17 +4,28 @@
   flex-direction: column;
   align-items: center;
   width: 75%;
-  background-color: aliceblue;
-  padding: 1em 5rem;
   margin: 1rem;
 }
 
+.heading {
+  margin-bottom: 1rem;
+}
+
 .thumbnail {
+  width: 100%;
   img {
-    height: auto;
-    width: 12rem;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
+
   &:hover {
     cursor: pointer;
   }
+}
+
+.description {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--card-background);
 }

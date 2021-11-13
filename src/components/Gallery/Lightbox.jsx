@@ -29,7 +29,7 @@ export default function LightboxElement({
   }
   return (
     <div className={styles.root}>
-      <div><strong>{collectionName}</strong></div>
+      <h4 className={styles.heading}>{collectionName}</h4>
       <div 
         className={styles.thumbnail}
         onClick={() => handleGalleryOpen(collectionId)}
@@ -46,7 +46,7 @@ export default function LightboxElement({
             onMovePrevRequest={() => onMovePrevRequest()}
           />
         }
-      <div>{description}</div>
+      <div className={styles.description}>{description}</div>
     </div>
   )
 }
