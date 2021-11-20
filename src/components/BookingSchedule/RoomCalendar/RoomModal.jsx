@@ -73,7 +73,9 @@ export default function RoomModal({
     <div className={styles.root}>
       <Modal show={showModal} size="lg">
         <Modal.Header>
-          Book A Room:
+          <h4 className={styles.heading}>
+            Book A Room:
+          </h4>
         </Modal.Header>
         <Modal.Body>
           <div className={styles.roomOptions}>

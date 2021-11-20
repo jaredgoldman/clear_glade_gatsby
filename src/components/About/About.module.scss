@@ -19,7 +19,7 @@
 .contact {
   display: flex;
   padding: 1em;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1em;
   max-width: 80%;
   margin: 2rem 5%;
@@ -34,7 +34,8 @@
 }
 
 .contact-info {
-  width: 60%;
+  width: 50%;
+  padding-right: 5%;
 }
 
 .map {
