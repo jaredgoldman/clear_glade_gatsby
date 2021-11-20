@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 // import announcementData from "../../../mocks/announcementData";
-import Announcement from "./Announcement"
-import axios from "axios";
+import Announcement from './Announcement'
+import axios from 'axios'
 
-import * as styles from "./Announcements.module.scss"
+import * as styles from './Announcements.module.scss'
 
 export default function Announcements() {
   const [posts, setPosts] = useState()
@@ -13,8 +13,8 @@ export default function Announcements() {
       try {
         const res = await axios.get('/posts/')
         setPosts(res.data)
-      } catch(e) {
-        console.log(e.response);
+      } catch (e) {
+        console.log(e.response)
       }
     }
     fetchAnnoucments()
@@ -22,23 +22,23 @@ export default function Announcements() {
 
   const announcements = posts?.reverse().map((post, i) => {
     if (i <= 5) {
-      const { title, content, created_at, id, attachments } = post;
-      return <Announcement
-        title={title}
-        content={content}
-        date={created_at}
-        attachments={attachments}
-        key={id}
-      />
+      const { title, content, created_at, id, attachments } = post
+      return (
+        <Announcement
+          title={title}
+          content={content}
+          date={created_at}
+          attachments={attachments}
+          key={id}
+        />
+      )
     }
   })
 
   return (
     <div className={styles.root}>
       <h2 className={styles.heading}>Recent Announcements</h2>
-      <div className={styles.announcements}>
-        {announcements}
-      </div>
+      <div className={styles.announcements}>{announcements}</div>
     </div>
   )
 }

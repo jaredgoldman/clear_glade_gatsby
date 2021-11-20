@@ -1,8 +1,8 @@
 .root {
-  display: flex;
-  flex-direction: column;
   width: 75%;
   margin: 2rem;
+  border: 1px solid black;
+  height: fit-content;
 }
 
 .heading {
@@ -15,10 +15,13 @@
   width: 100%;
   display: flex;
   align-items: center;
+
   img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
   }
 
   &:hover {

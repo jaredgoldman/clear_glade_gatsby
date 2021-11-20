@@ -1,7 +1,6 @@
 .root {
   width: 100%;
   padding-bottom: 5rem;
-  background-color: rgb(239, 242, 248);
 }
 
 .announcements {
@@ -13,10 +12,10 @@
 
 .heading {
   padding: 1rem;
-  margin-bottom: 1.75rem;
+  margin: 1.75rem 0;
   font-family: var(--hero_font);
   width: 100%;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   background-color: white;
 }
