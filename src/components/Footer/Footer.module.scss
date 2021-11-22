@@ -6,9 +6,15 @@
   background-color: var(--nav-background);
   height: 7.5rem;
   font-family: var(--default_font);
-  border-top: 5px solid rgb(168, 147, 108);
+  border-top: 3px solid var(--copper);
+  color: var(--seafoam);
 
   a {
-    color: var(--anchor);
+    color: var(--seafoam);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--copper);
+    }
   }
 }

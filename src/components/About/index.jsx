@@ -1,6 +1,8 @@
 import React from 'react'
 import MapContainer from './MapContainer'
-import * as styles from './About.module.scss'
+import * as styles from './index.module.scss'
+import Amenities from './Amenities'
+import Rules from './Rules'
 
 export default function About() {
   return (
@@ -38,6 +40,8 @@ export default function About() {
           <MapContainer />
         </div>
       </div>
+      <Amenities />
+      <Rules />
     </div>
   )
 }

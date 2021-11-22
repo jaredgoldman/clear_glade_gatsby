@@ -5,16 +5,17 @@
   padding: 1rem 2rem;
   height: 6.5rem;
   background-color: var(--nav-background);
-  border-bottom: 5px solid rgb(168, 147, 108);
+  border-bottom: 3px solid var(--copper);
+  font-family: var(--default_font);
 
   a {
     text-decoration: none;
-    color: black;
+    color: var(--seafoam);
     padding: 0.5rem;
     border-radius: 0.75rem;
 
     &:hover {
-      background-color: rgb(165, 165, 165);
+      color: var(--copper);
     }
   }
 }
@@ -24,7 +25,6 @@
   align-items: center;
   text-decoration: none;
   font-size: 1.25rem;
-  font-family: var(--hero_font);
 }
 
 .logoImage {
@@ -35,5 +35,16 @@
 
 .buttons {
   font-size: 1.15rem;
-  font-family: var(--default_font);
+
+  @media only screen and (max-width: 1224px) {
+    display: none;
+  }
+}
+
+.burger {
+  display: none;
+
+  @media only screen and (max-width: 1224px) {
+    display: inline;
+  }
 }
