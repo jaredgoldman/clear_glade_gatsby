@@ -31,6 +31,6 @@ module.exports = {
   ],
   proxy: {
     prefix: '/*',
-    url: 'http://localhost:1337',
+    url: 'https://peaceful-stream-17384.herokuapp.com',
   },
 }

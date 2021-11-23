@@ -1,16 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import ls from 'local-storage'
-import { navigate } from "gatsby-link";
+import { navigate } from 'gatsby-link'
 
-const AuthContext = React.createContext();
+const AuthContext = React.createContext()
 
 export function useAuth() {
-  return useContext(AuthContext);
+  return useContext(AuthContext)
 }
 
 export function AuthProvider({ children }) {
-
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
 
@@ -22,21 +21,20 @@ export function AuthProvider({ children }) {
     }
   }, [])
 
-
   const login = async (email, password) => {
     try {
       const user = await axios.post('/auth/local/', {
         identifier: email,
-        password
+        password,
       })
       ls('user', user.data)
-      navigate('/user/')
-    } catch(e) {
-      console.log('error');
-      console.log(e.response);
+      navigate('/about')
+    } catch (e) {
+      console.log('error')
+      console.log(e.response)
     }
   }
- 
+
   const logout = () => {
     ls.remove('user')
   }
@@ -45,12 +43,8 @@ export function AuthProvider({ children }) {
     login,
     logout,
     loggedIn,
-    currentUser
+    currentUser,
   }
-  
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
