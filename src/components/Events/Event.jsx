@@ -5,10 +5,7 @@ import format from 'date-fns/format'
 
 export default function Event({ summary, description, start, end, attachments }) {
   const attachment = attachments ? `https://drive.google.com/uc?id=${attachments[0].fileId}` : ''
-  const dateRange = `${format(new Date(start.dateTime), 'PPp')} - ${format(
-    new Date(end.dateTime),
-    'p'
-  )}`
+  const dateRange = `${format(new Date(start), 'PPp')} - ${format(new Date(end), 'p')}`
 
   return (
     <div className={styles.root}>
