@@ -4,7 +4,8 @@ import Events from '../components/Events'
 import Layout from '../components/Layouts/Layout'
 
 export default function events(...props) {
-  const events = props[0].data.allCalendarEvent.nodes
+  // const events = props[0].data.allCalendarEvent.nodes
+  const events = ''
 
   return (
     <Layout>
