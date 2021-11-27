@@ -13,7 +13,7 @@ module.exports = {
         spreadsheetId: process.env.GATSBY_G_SPREADSHEET_ID,
         spreadsheetName: '',
         typePrefix: '',
-        credentials: require('./credentials.json'),
+        credentials: JSON.parse(process.env.GATSBY_GOOGLE_CAL_CREDENTIALS),
         filterNode: () => true,
         mapNode: (node) => node,
       },

@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
         password,
       })
       ls('user', user.data)
-      navigate('/about')
+      navigate('/home')
     } catch (e) {
       console.log('error')
       console.log(e.response)
@@ -39,7 +39,16 @@ export function AuthProvider({ children }) {
     ls.remove('user')
   }
 
+  const { jwt } = ls.get('user')
+
+  const authToken = {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  }
+
   const value = {
+    authToken,
     login,
     logout,
     loggedIn,

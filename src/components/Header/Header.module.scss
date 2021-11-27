@@ -7,6 +7,7 @@
   background-color: var(--nav-background);
   border-bottom: 3px solid var(--copper);
   font-family: var(--default_font);
+  z-index: 2;
 
   a {
     text-decoration: none;

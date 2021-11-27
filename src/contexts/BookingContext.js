@@ -1,84 +1,86 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { addWeeks, startOfWeek, endOfWeek, nextThursday } from 'date-fns';
-import axios from 'axios';
-import UseEmail from '../hooks/UseEmail';
+import { addWeeks, startOfWeek, endOfWeek, nextThursday } from 'date-fns'
+import axios from 'axios'
+import UseEmail from '../hooks/UseEmail'
+import { useAuth } from './AuthContext'
 
-const BookingContext = React.createContext();
+const BookingContext = React.createContext()
 
 export function useBooking() {
-  return useContext(BookingContext);
+  return useContext(BookingContext)
 }
 
 export function BookingProvider({ children }) {
-  const [rooms, setRooms] = useState();
-  const [weeks, setWeeks] = useState();
-  const [bookings, setBookings] = useState();
+  const { authToken } = useAuth()
+  const [rooms, setRooms] = useState()
+  const [weeks, setWeeks] = useState()
+  const [bookings, setBookings] = useState()
   const [processingBooking, setProcessingBooking] = useState(false)
 
   const { sendConfirmationEmail } = UseEmail()
 
   useEffect(() => {
-    getRooms().then(data => setRooms(data))
+    getRooms().then((data) => setRooms(data))
     setWeeks(getWeeks(Date.now()))
   }, [])
 
   useEffect(() => {
-    getBookings().then(data => {
+    getBookings().then((data) => {
       setBookings(data)
     })
   }, [processingBooking])
- 
+
   const getRooms = async () => {
     try {
-      const res = await axios.get('/rooms/');
+      const res = await axios.get('/rooms/', authToken)
       return res.data
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
 
   const getWeeks = (currDate) => {
-    const firstWeek = formatWeek(currDate);
-    const weeks = [firstWeek];
+    const firstWeek = formatWeek(currDate)
+    const weeks = [firstWeek]
 
     for (let i = 1; i <= 7; i++) {
-      currDate = addWeeks(currDate, 1);
+      currDate = addWeeks(currDate, 1)
       const formattedWeek = formatWeek(currDate)
-      weeks.push(formattedWeek);
+      weeks.push(formattedWeek)
     }
-   return weeks;
+    return weeks
   }
 
   const bookRoom = async (bookingData) => {
     try {
-      const res = await axios.post('/bookings/', bookingData)
+      const res = await axios.post('/bookings/', { ...bookingData, ...authToken })
       sendConfirmationEmail(res.data)
       return res.data
-    } catch(error) {
-      console.log(error);
+    } catch (error) {
+      console.log(error)
     }
   }
 
   const getBookings = async () => {
     //TODO: only retreive bookings from the present day forward
     try {
-      const res = await axios.get('/bookings/');
-      return res.data;
-    } catch(error) {
-      console.log(error);
+      const res = await axios.get('/bookings/', authToken)
+      return res.data
+    } catch (error) {
+      console.log(error)
     }
   }
 
   // HELPERS
   const formatWeek = (currDate) => {
-    const start = startOfWeek(currDate, { weekStartsOn: 1 });
-    const end = endOfWeek(currDate, { weekStartsOn: 1 });
-    const thursday = nextThursday(start);
+    const start = startOfWeek(currDate, { weekStartsOn: 1 })
+    const end = endOfWeek(currDate, { weekStartsOn: 1 })
+    const thursday = nextThursday(start)
 
     return {
       start,
       end,
-      thursday
+      thursday,
     }
   }
 
@@ -89,12 +91,8 @@ export function BookingProvider({ children }) {
     bookRoom,
     getBookings,
     processingBooking,
-    setProcessingBooking
+    setProcessingBooking,
   }
 
-  return (
-    <BookingContext.Provider value={value}>
-      {children}
-    </BookingContext.Provider>
-  )
+  return <BookingContext.Provider value={value}>{children}</BookingContext.Provider>
 }
