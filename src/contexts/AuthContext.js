@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
     ls.remove('user')
   }
 
-  const { jwt } = ls.get('user')
+  const { jwt } = ls.get('user') || {}
 
   const authToken = {
     headers: {
