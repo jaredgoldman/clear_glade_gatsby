@@ -3,6 +3,8 @@ import axios from 'axios'
 import ls from 'local-storage'
 import { navigate } from 'gatsby-link'
 
+const serverURL = process.env.GATSBY_SERVER_URL
+
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -23,7 +25,7 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     try {
-      const user = await axios.post('/auth/local/', {
+      const user = await axios.post(`${serverURL}/auth/local/`, {
         identifier: email,
         password,
       })
