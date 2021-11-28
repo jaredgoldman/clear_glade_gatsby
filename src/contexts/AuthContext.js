@@ -16,16 +16,19 @@ export function AuthProvider({ children }) {
   const [authError, setAuthError] = useState('')
 
   useEffect(() => {
-    console.log(authError)
-  }, [authError])
-
-  useEffect(() => {
     const user = ls.get('user')
     if (user) {
       setCurrentUser(user)
       setLoggedIn(true)
     }
   }, [])
+
+  const handleSetAuthError = (errorMsg) => {
+    setAuthError(errorMsg)
+    setTimeout(() => {
+      setAuthError('')
+    }, 5000)
+  }
 
   const login = async (email, password) => {
     try {
@@ -38,7 +41,7 @@ export function AuthProvider({ children }) {
     } catch (e) {
       console.log('error')
       console.log(e.response)
-      setAuthError('error logging in')
+      handleSetAuthError('error logging in')
     }
   }
 
