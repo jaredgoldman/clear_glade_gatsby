@@ -1,11 +1,11 @@
 import React from 'react'
-// import { graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Events from '../components/Events'
 import Layout from '../components/Layouts/Layout'
 
-export default function events(...props) {
-  // const events = props[0].data.allCalendarEvent.nodes
-  const events = []
+export default function events({ data: allCalendarEvent }) {
+  const events = allCalendarEvent.nodes
+  // const events = []
 
   return (
     <Layout>
@@ -14,26 +14,26 @@ export default function events(...props) {
   )
 }
 
-// export const query = graphql`
-//   {
-//     allCalendarEvent {
-//       nodes {
-//         description
-//         summary
-//         start {
-//           dateTime
-//         }
-//         end {
-//           dateTime
-//         }
-//         attachments {
-//           fileUrl
-//           fileId
-//           iconLink
-//           title
-//         }
-//         id
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  {
+    allCalendarEvent {
+      nodes {
+        description
+        summary
+        start {
+          dateTime
+        }
+        end {
+          dateTime
+        }
+        attachments {
+          fileUrl
+          fileId
+          iconLink
+          title
+        }
+        id
+      }
+    }
+  }
+`

@@ -3,6 +3,7 @@ import { addWeeks, startOfWeek, endOfWeek, nextThursday } from 'date-fns'
 import axios from 'axios'
 import UseEmail from '../hooks/UseEmail'
 import { useAuth } from './AuthContext'
+const serverURL = process.env.GATSBY_SERVER_URL
 
 const BookingContext = React.createContext()
 
@@ -32,7 +33,7 @@ export function BookingProvider({ children }) {
 
   const getRooms = async () => {
     try {
-      const res = await axios.get('/rooms/', authToken)
+      const res = await axios.get(`${serverURL}/rooms/`, authToken)
       return res.data
     } catch (error) {
       console.log(error)
@@ -53,7 +54,7 @@ export function BookingProvider({ children }) {
 
   const bookRoom = async (bookingData) => {
     try {
-      const res = await axios.post('/bookings/', { ...bookingData, ...authToken })
+      const res = await axios.post(`${serverURL}/rooms/`, { ...bookingData, ...authToken })
       sendConfirmationEmail(res.data)
       return res.data
     } catch (error) {
@@ -64,7 +65,7 @@ export function BookingProvider({ children }) {
   const getBookings = async () => {
     //TODO: only retreive bookings from the present day forward
     try {
-      const res = await axios.get('/bookings/', authToken)
+      const res = await axios.get(`${serverURL}/bookings/`, authToken)
       return res.data
     } catch (error) {
       console.log(error)

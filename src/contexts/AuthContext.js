@@ -13,6 +13,11 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
+  const [authError, setAuthError] = useState('')
+
+  useEffect(() => {
+    console.log(authError)
+  }, [authError])
 
   useEffect(() => {
     const user = ls.get('user')
@@ -32,7 +37,8 @@ export function AuthProvider({ children }) {
       navigate('/about')
     } catch (e) {
       console.log('error')
-      console.log(e)
+      console.log(e.response)
+      setAuthError('error logging in')
     }
   }
 
@@ -55,6 +61,8 @@ export function AuthProvider({ children }) {
     logout,
     loggedIn,
     currentUser,
+    authError,
+    setAuthError,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

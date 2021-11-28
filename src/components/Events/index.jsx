@@ -1,11 +1,11 @@
 import React from 'react'
-// import { get } from 'lodash'
 import Event from './Event'
 import eventData from '../../mocks/eventData'
 import * as styles from './index.module.scss'
 
 export default function Events({ events }) {
-  const upcomingEvents = eventData.map((event) => {
+  // const upcomingEvents = eventData.map((event) => {
+  const upcomingEvents = events.map((event) => {
     const { summary, description, start, end, id, attachments } = event
 
     return (

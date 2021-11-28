@@ -30,16 +30,16 @@ module.exports = {
         generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
       },
     },
-    // {
-    //   resolve: `gatsby-source-google-calendar`,
-    //   options: {
-    //     calendarIds: ['6tchlknm4e05jr98426c18hvvc@group.calendar.google.com'],
-    //     timeMin: new Date().toISOString(),
-    //     maxResults: 10,
-    //     singleEvents: true,
-    //     orderBy: 'startTime',
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-google-calendar`,
+      options: {
+        calendarIds: ['6tchlknm4e05jr98426c18hvvc@group.calendar.google.com'],
+        timeMin: new Date().toISOString(),
+        maxResults: 10,
+        singleEvents: true,
+        orderBy: 'startTime',
+      },
+    },
   ],
   proxy: {
     prefix: '/*',
