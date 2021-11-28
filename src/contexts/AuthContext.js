@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
       navigate('/about')
     } catch (e) {
       console.log('error')
-      console.log(e.response)
+      console.log(e)
     }
   }
 
