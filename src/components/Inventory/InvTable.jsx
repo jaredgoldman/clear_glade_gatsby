@@ -1,29 +1,23 @@
-import React from "react"
-import InvTableRow from "./InvTableRow"
+import React from 'react'
+import InvTableRow from './InvTableRow'
+import inventoryData from '../../mocks/inventoryData'
+import * as styles from './InvTable.module.scss'
 
-import * as styles from "./InvTable.module.scss"
+export default function InvTable({ rows }) {
+  // const inventoryRows = rows.map((product) => {
+  //   const { item, quantity, price, description } = product.node
+  const inventoryRows = inventoryData.map((product) => {
+    const { item, quantity, price, description } = product
 
-export default function InvTable({
-  rows
-}) {
-
-  const inventoryRows = rows.map(product => {
-    const { 
-      item,
-      quantity,
-      price,
-      description,
-      image
-    } = product.node
-    
-    return <InvTableRow 
-      item={item}
-      quantity={quantity}
-      price={price}
-      description={description}
-      image={image}
-      key={item}
-    />
+    return (
+      <InvTableRow
+        item={item}
+        quantity={quantity}
+        price={price}
+        description={description}
+        key={item}
+      />
+    )
   })
 
   return (
@@ -35,9 +29,7 @@ export default function InvTable({
         <th></th>
         {/* <th>Image</th> */}
       </thead>
-      <tbody>
-        {inventoryRows}
-      </tbody>
+      <tbody>{inventoryRows}</tbody>
     </table>
   )
 }
