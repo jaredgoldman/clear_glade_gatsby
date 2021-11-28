@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import ls from 'local-storage'
 import { navigate } from 'gatsby-link'
-
 const serverURL = process.env.GATSBY_SERVER_URL
 
 const AuthContext = React.createContext()

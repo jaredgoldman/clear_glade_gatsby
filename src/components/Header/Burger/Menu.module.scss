@@ -2,21 +2,37 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 30rem;
+  height: 29rem;
   width: 20rem;
   background-color: var(--nav-background);
   border-bottom-left-radius: 25px;
-  border-left: 3px solid var(--copper);
-  border-bottom: 3px solid var(--copper);
 }
 
 .buttons {
-  padding-top: 3rem;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   a {
     font-size: 25px;
+  }
+}
+
+.close {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  padding-top: 0.4rem;
+  font-size: 25px;
+  color: white;
+
+  &:hover {
+    color: var(--copper);
   }
 }

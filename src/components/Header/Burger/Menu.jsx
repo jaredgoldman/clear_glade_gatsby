@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as styles from './Menu.module.scss'
 import { Link } from 'gatsby'
 import { useAuth } from '../../../contexts/AuthContext'
 
 export default function Menu({ setShowMenu }) {
   const { logout, loggedIn } = useAuth()
+  const menuRef = useRef()
 
   const handleLogout = async () => {
     logout()
   }
 
+  const handleClick = (e) => {
+    if (menuRef.current.contains(e.target)) {
+      return
+    }
+    setShowMenu(false)
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick)
+    return () => {
+      document.removeEventListener('mousedown', handleClick)
+    }
+  }, [])
+
   return (
-    <div className={styles.root}>
+    <div ref={menuRef} className={styles.root}>
       <div className={styles.buttons}>
         {!loggedIn && <Link to='/login'>Login</Link>}
         {loggedIn && (
@@ -27,7 +42,9 @@ export default function Menu({ setShowMenu }) {
             </Link>
           </>
         )}
-        <button onClick={() => setShowMenu(false)}>Close</button>
+        <button className={styles.close} onClick={() => setShowMenu(false)}>
+          Close menu
+        </button>
       </div>
     </div>
   )

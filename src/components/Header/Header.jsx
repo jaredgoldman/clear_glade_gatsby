@@ -8,8 +8,6 @@ import Burger from './Burger'
 export default function Header() {
   const { logout, loggedIn } = useAuth()
 
-  const handleLogout = logout()
-
   return (
     <nav className={styles.root}>
       <div className={styles.navLogoImage}>
@@ -30,7 +28,7 @@ export default function Header() {
             <Link to='/inventory'>Inventory</Link>
             <Link to='/schedule'>Book A Room</Link>
             <Link to='/media'>Media</Link>
-            <Link to='/' onClick={handleLogout}>
+            <Link to='/' onClick={() => logout}>
               Logout
             </Link>
           </>
