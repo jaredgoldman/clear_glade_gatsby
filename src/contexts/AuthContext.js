@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
         password,
       })
       ls('user', user.data)
-      navigate('/home')
+      navigate('/about')
     } catch (e) {
       console.log('error')
       console.log(e.response)
@@ -37,6 +37,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     ls.remove('user')
+    setLoggedIn(false)
   }
 
   const { jwt } = ls.get('user') || {}
