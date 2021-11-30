@@ -3,6 +3,7 @@ import { addWeeks, startOfWeek, endOfWeek, nextThursday } from 'date-fns'
 import axios from 'axios'
 import UseEmail from '../hooks/UseEmail'
 import { useAuth } from './AuthContext'
+import { useStaticQuery, graphql } from 'gatsby'
 const serverURL = process.env.GATSBY_SERVER_URL
 
 const BookingContext = React.createContext()
@@ -13,15 +14,29 @@ export function useBooking() {
 
 export function BookingProvider({ children }) {
   const { authToken } = useAuth()
-  const [rooms, setRooms] = useState()
+  // const [rooms, setRooms] = useState()
   const [weeks, setWeeks] = useState()
   const [bookings, setBookings] = useState()
   const [processingBooking, setProcessingBooking] = useState(false)
 
   const { sendConfirmationEmail } = UseEmail()
 
+  const strapiRooms = useStaticQuery(graphql`
+    query MyQuery {
+      allStrapiRooms {
+        nodes {
+          description
+          id
+          roomName
+          type
+        }
+      }
+    }
+  `)
+
+  const rooms = strapiRooms.allStrapiRooms.nodes
+
   useEffect(() => {
-    getRooms().then((data) => setRooms(data))
     setWeeks(getWeeks(Date.now()))
   }, [])
 
@@ -30,15 +45,6 @@ export function BookingProvider({ children }) {
       setBookings(data)
     })
   }, [processingBooking])
-
-  const getRooms = async () => {
-    try {
-      const res = await axios.get(`${serverURL}/rooms/`, authToken)
-      return res.data
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const getWeeks = (currDate) => {
     const firstWeek = formatWeek(currDate)
