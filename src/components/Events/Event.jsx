@@ -1,20 +1,20 @@
 import React from 'react'
 import * as styles from './Event.module.scss'
 import format from 'date-fns/format'
-// import eventImage from '../../images/pathway.png'
+const URL = process.env.GATSBY_SERVER_URL
 
-export default function Event({ summary, description, start, end, attachments }) {
-  const attachment = attachments ? `https://drive.google.com/uc?id=${attachments[0].fileId}` : ''
+export default function Event({ name, start, end, description, imageUrl }) {
   const dateRange = `${format(new Date(start), 'PPp')} - ${format(new Date(end), 'p')}`
+  const imageSrc = `${URL}${imageUrl}`
 
   return (
     <div className={styles.root}>
-      <h2 className={styles.eventHeading}>{summary}</h2>
+      <h2 className={styles.eventHeading}>{name}</h2>
       <div className={styles.eventDetails__date}>{dateRange}</div>
-      {attachment && (
+      {imageUrl && (
         <div className={styles.attachment}>
           <div className={styles.imageContainer}>
-            <img src={attachment} alt='' />
+            <img src={imageSrc} alt='' />
           </div>
         </div>
       )}

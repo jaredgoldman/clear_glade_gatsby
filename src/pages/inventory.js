@@ -3,24 +3,24 @@ import Layout from '../components/Layouts/Layout'
 import Inventory from '../components/Inventory/Inventory'
 import { graphql } from 'gatsby'
 
-export default function inventory(props) {
-
+export default function inventory({ data }) {
   return (
     <Layout>
-      <Inventory {...props}/>
+      <Inventory products={data.allStrapiProducts} />
     </Layout>
   )
 }
 
-export const spreadsheetQuery = graphql`
+export const query = graphql`
   query {
-    allSheet1 {
-      edges {
-        node {
-          item
-          price
-          quantity
-          description
+    allStrapiProducts {
+      nodes {
+        description
+        quantity
+        name
+        price
+        image {
+          url
         }
       }
     }

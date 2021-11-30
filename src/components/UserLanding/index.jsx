@@ -3,11 +3,11 @@ import * as styles from './index.module.scss'
 
 import Announcements from './Announcements/Announcements'
 
-export default function UserLanding() {
+export default function UserLanding({ data }) {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <Announcements />
+        <Announcements data={data} />
       </div>
     </div>
   )

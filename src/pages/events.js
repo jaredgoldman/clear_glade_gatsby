@@ -3,36 +3,26 @@ import { graphql } from 'gatsby'
 import Events from '../components/Events'
 import Layout from '../components/Layouts/Layout'
 
-export default function events({ data: allCalendarEvent }) {
-  const events = allCalendarEvent.nodes
-  // const events = []
-
+export default function events({ data }) {
   return (
     <Layout>
-      <Events events={events} />
+      <Events events={data.allStrapiEvents} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  {
-    allCalendarEvent {
+  query {
+    allStrapiEvents {
       nodes {
+        name
+        start
+        end
+        created_at
         description
-        summary
-        start {
-          dateTime
+        image {
+          url
         }
-        end {
-          dateTime
-        }
-        attachments {
-          fileUrl
-          fileId
-          iconLink
-          title
-        }
-        id
       }
     }
   }

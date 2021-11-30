@@ -28,6 +28,7 @@
     "gatsby-source-filesystem": "^4.1.0",
     "gatsby-source-google-calendar": "^1.1.1",
     "gatsby-source-google-spreadsheet": "^2.0.0",
+    "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^4.1.0",
     "googleapis": "^39.2.0",
     "https": "^1.0.0",

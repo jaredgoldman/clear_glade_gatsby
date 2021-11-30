@@ -8,17 +8,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-source-google-spreadsheet',
-      options: {
-        spreadsheetId: process.env.GATSBY_G_SPREADSHEET_ID,
-        spreadsheetName: '',
-        typePrefix: '',
-        credentials: JSON.parse(process.env.GATSBY_GOOGLE_CAL_CREDENTIALS),
-        filterNode: () => true,
-        mapNode: (node) => node,
-      },
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {}, // option to add more headers. `Link` headers are transformed by the below criteria
@@ -31,13 +20,23 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-google-calendar`,
+      resolve: `gatsby-source-strapi`,
       options: {
-        calendarIds: ['6tchlknm4e05jr98426c18hvvc@group.calendar.google.com'],
-        timeMin: new Date().toISOString(),
-        maxResults: 10,
-        singleEvents: true,
-        orderBy: 'startTime',
+        apiURL: `http://localhost:1337`,
+        queryLimit: 1000,
+        collectionTypes: [
+          `bookings`,
+          'announcements',
+          `events`,
+          'image-collections',
+          'products',
+          'rooms',
+        ],
+        loginData: {
+          identifier: process.env.GATSBY_STRAPI_IDENTIFIER,
+          password: process.env.GATSBY_STRAPI_PASSWORD,
+        },
+        singleTypes: [],
       },
     },
   ],

@@ -5,17 +5,18 @@ import * as styles from './index.module.scss'
 
 export default function Events({ events }) {
   // const upcomingEvents = eventData.map((event) => {
-  const upcomingEvents = events.map((event) => {
-    const { summary, description, start, end, id, attachments } = event
+  const upcomingEvents = events.nodes.map((event) => {
+    const { name, start, end, updated_at, created_at, description, image } = event
 
     return (
       <Event
-        summary={summary}
-        description={description}
+        name={name}
         start={start}
         end={end}
-        attachments={attachments}
-        key={id}
+        updatedAt={updated_at}
+        createdAt={created_at}
+        description={description}
+        imageUrl={image.url}
       />
     )
   })

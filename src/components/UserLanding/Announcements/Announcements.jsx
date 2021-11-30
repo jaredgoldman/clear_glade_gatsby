@@ -1,34 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 // import announcementData from "../../../mocks/announcementData";
 import Announcement from './Announcement'
-import axios from 'axios'
 
 import * as styles from './Announcements.module.scss'
 
-export default function Announcements() {
-  const [posts, setPosts] = useState()
-
-  useEffect(() => {
-    const fetchAnnoucments = async () => {
-      try {
-        const res = await axios.get('/posts/')
-        setPosts(res.data)
-      } catch (e) {
-        console.log(e.response)
-      }
-    }
-    fetchAnnoucments()
-  }, [])
+export default function Announcements({ data }) {
+  const posts = data.nodes
 
   const announcements = posts?.reverse().map((post, i) => {
     if (i <= 5) {
-      const { title, content, created_at, id, attachments } = post
+      const { title, content, published_at, updated_at, id, attachments, image } = post
       return (
         <Announcement
           title={title}
           content={content}
-          date={created_at}
+          publishedAt={published_at}
+          updatedAt={updated_at}
           attachments={attachments}
+          imageUrl={image.url}
           key={id}
         />
       )
